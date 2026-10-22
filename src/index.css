@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #0B0D10;
+    --bg-secondary: #12161C;
+    --bg-card: #151A22;
+    --bg-card-hover: #1A212B;
+    --border-color: #222730;
+    --border-hover: #323A48;
+    --text-primary: #F5F5F5;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --accent: #7AA2FF;
+    --accent-glow: rgba(122, 162, 255, 0.2);
+  }
+
+  html.light {
+    --bg-primary: #F8F9FA;
+    --bg-secondary: #FFFFFF;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #F3F4F6;
+    --border-color: #E2E8F0;
+    --border-hover: #CBD5E1;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --accent: #2563EB;
+    --accent-glow: rgba(37, 99, 235, 0.15);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom cinematic subtle grid background */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.light .bg-tech-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* Glow & Accent utilities */
+.glow-accent {
+  box-shadow: 0 0 25px -5px rgba(122, 162, 255, 0.3);
+}
+
+.glow-accent-subtle {
+  box-shadow: 0 0 15px -3px rgba(122, 162, 255, 0.15);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0D10;
+}
+.light ::-webkit-scrollbar-track {
+  background: #F1F3F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #222730;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7AA2FF;
+}
+
+/* Print Specific Rules for Resume */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  /* Hide everything except the resume container */
+  header,
+  nav,
+  footer,
+  #hero,
+  #about,
+  #skills,
+  #projects,
+  #timeline,
+  #creative,
+  #contact,
+  .no-print,
+  .fixed,
+  button:not(.allow-print) {
+    display: none !important;
+  }
+
+  #resume {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    width: 100% !important;
+  }
+
+  .resume-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    color: #111827 !important;
+  }
+
+  .resume-sheet * {
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+  }
+
+  .resume-sheet .text-accent {
+    color: #1d4ed8 !important;
+  }
+
+  .resume-sheet .bg-secondary {
+    background: #f9fafb !important;
+  }
+
+  @page {
+    margin: 1.5cm;
+    size: auto;
+  }
+}
